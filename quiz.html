@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Testar Conhecimentos | UNIPLAN</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;800&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 50px;
+            backdrop-filter: blur(16px);
+        }
+
+        .question-block {
+            display: none;
+        }
+
+        .question-block.active {
+            display: block;
+            animation: fadeInRight 0.5s ease-out;
+        }
+
+        .question-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #fff;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .option {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 18px 25px;
+            margin-bottom: 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1.15rem;
+            color: #cbd5e1;
+        }
+
+        .option:hover {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: #3b82f6;
+        }
+
+        .option.selected {
+            background: #3b82f6;
+            color: #fff;
+            border-color: #60a5fa;
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .quiz-footer {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-btn {
+            padding: 15px 30px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            font-family: 'Outfit', sans-serif;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: #2563eb;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .nav-btn:disabled {
+            background: #475569;
+            cursor: not-allowed;
+            opacity: 0.5;
+            box-shadow: none;
+            transform: none;
+        }
+
+        #results {
+            display: none;
+            text-align: center;
+        }
+
+        .score {
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: #60a5fa;
+            margin: 15px 0;
+            text-shadow: 0 5px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .feedback-msg {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            color: #f8fafc;
+        }
+
+        .summary-box {
+            text-align: left;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .summary-box p {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .success-text {
+            color: #4ade80;
+        }
+
+        .error-text {
+            color: #f87171;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            width: 20%;
+            transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: #475569;
+        }
+
+        .btn-secondary:hover {
+            background: #334155;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="banner detail-banner" style="height: 35vh; min-height: 250px;">
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+            <h1 class="animate-on-scroll">Quiz: Teste seus conhecimentos</h1>
+            <p class="animate-on-scroll delay-1">Mostre o que aprendeu sobre a regra 3-2-1 de backups</p>
+        </div>
+    </header>
+
+    <main class="main-content detail-content" style="padding-top: 60px;">
+        <div class="quiz-container">
+            <div id="quiz-flow">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress"></div>
+                </div>
+
+                <div id="questions-wrapper">
+                    <div class="question-block active" data-q="1">
+                        <h2 class="question-title">1. Em que data é comemorado oficialmente o Dia Mundial do Backup?
+                        </h2>
+                        <ul class="options">
+                            <li class="option" data-ans="0">31 de Dezembro</li>
+                            <li class="option" data-ans="1">31 de Março</li>
+                            <li class="option" data-ans="0">1 de Abril</li>
+                            <li class="option" data-ans="0">13 de Maio</li>
+                        </ul>
+                    </div>
+
+                    <div class="question-block" data-q="2">
+                        <h2 class="question-title">2. Na regra de ouro "3-2-1", o que o "3" exige que você faça?</h2>
+                        <ul class="options">
+                            <li class="option" data-ans="0">Acessar o backup 3 vezes por semana</li>
+                            <li class="option" data-ans="0">Arquivar o backup por no mínimo 3 meses</li>
+                            <li class="option" data-ans="1">Manter sempre 3 cópias exatas dos seus dados vitais (1
+                                primária e 2 de segurança)</li>
+                            <li class="option" data-ans="0">Utilizar 3 nuvens simultaneamente</li>
+                        </ul>
+                    </div>
+
+                    <div class="question-block" data-q="3">
+                        <h2 class="question-title">3. Qual a principal razão para exigirmos "2 mídias ou tecnologias de
+                            armazenamento diferentes"?</h2>
+                        <ul class="options">
+                            <li class="option" data-ans="1">Evitar que uma mesma causa de defeito em série destrua as
+                                duas cópias e a principal juntas</li>
+                            <li class="option" data-ans="0">Para baratear os custos contratando marcas mais acessíveis
+                            </li>
+                            <li class="option" data-ans="0">Para conseguir abrir em computadores Windows e Mac OS</li>
+                            <li class="option" data-ans="0">Para que o arquivo ocupe metade do espaço de armazenamento
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="question-block" data-q="4">
+                        <h2 class="question-title">4. O "1" da estratégia exige um backup "Offsite". Onde ele deve
+                            ficar?</h2>
+                        <ul class="options">
+                            <li class="option" data-ans="0">Em uma partição diferente do mesmo Disco Rígido</li>
+                            <li class="option" data-ans="0">Em um pendrive dentro de segurança na mesma sala do servidor
+                            </li>
+                            <li class="option" data-ans="1">Em um local fisicamente ou geograficamente isolado (como
+                                nuvem ou outro prédio)</li>
+                            <li class="option" data-ans="0">No desktop do computador</li>
+                        </ul>
+                    </div>
+
+                    <div class="question-block" data-q="5">
+                        <h2 class="question-title">5. Um dos maiores riscos mortais às empresas atuais é o sequestro de
+                            dados exigindo pagamento. Que nome se dá a ele?</h2>
+                        <ul class="options">
+                            <li class="option" data-ans="0">DDoS (Negação de Serviço)</li>
+                            <li class="option" data-ans="0">Phishing de Teclado</li>
+                            <li class="option" data-ans="1">Ransomware</li>
+                            <li class="option" data-ans="0">Zero-day Spyware</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="quiz-footer">
+                    <span id="question-counter" style="color:#cbd5e1;">Pergunta 1 de 5</span>
+                    <button class="nav-btn" id="next-btn" disabled>Avançar</button>
+                </div>
+            </div>
+
+            <div id="results">
+                <h2 style="font-size: 2.5rem; color: #fff;">Quiz Concluído!</h2>
+                <div class="score"><span id="score-correct">0</span> / 5</div>
+                <p class="feedback-msg" id="feedback-msg"></p>
+
+                <div class="summary-box">
+                    <p class="success-text">✅ Quantidade de Acertos: <strong id="acertos-text"
+                            style="font-size:1.4rem;">0</strong></p>
+                    <p class="error-text">❌ Quantidade de Erros: <strong id="erros-text"
+                            style="font-size:1.4rem;">0</strong></p>
+                </div>
+
+                <div class="btn-group">
+                    <a href="quiz.html" class="nav-btn btn-secondary" style="text-decoration:none;">Refazer Quiz ↺</a>
+                    <a href="index.html" class="nav-btn" style="text-decoration:none;">← Voltar para Início</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const blocks = document.querySelectorAll('.question-block');
+            const nextBtn = document.getElementById('next-btn');
+            const progressFill = document.getElementById('progress');
+            const counterText = document.getElementById('question-counter');
+
+            let currentQ = 0;
+            let answers = [];
+
+            blocks.forEach((block, index) => {
+                const options = block.querySelectorAll('.option');
+                options.forEach(opt => {
+                    opt.addEventListener('click', () => {
+                        options.forEach(o => o.classList.remove('selected'));
+                        opt.classList.add('selected');
+                        answers[index] = parseInt(opt.getAttribute('data-ans'));
+                        nextBtn.disabled = false;
+                    });
+                });
+            });
+
+            nextBtn.addEventListener('click', () => {
+                blocks[currentQ].classList.remove('active');
+                currentQ++;
+
+                if (currentQ < blocks.length) {
+                    blocks[currentQ].classList.add('active');
+                    progressFill.style.width = ((currentQ + 1) * 20) + '%';
+                    counterText.innerText = `Pergunta ${currentQ + 1} de 5`;
+                    nextBtn.disabled = answers[currentQ] === undefined;
+                    if (currentQ === blocks.length - 1) {
+                        nextBtn.innerText = "Finalizar Quiz";
+                    }
+                } else {
+                    document.getElementById('quiz-flow').style.display = 'none';
+                    document.getElementById('results').style.display = 'block';
+
+                    const correctCount = answers.reduce((a, b) => a + b, 0);
+                    const wrongCount = 5 - correctCount;
+
+                    document.getElementById('score-correct').innerText = correctCount;
+                    document.getElementById('acertos-text').innerText = correctCount;
+                    document.getElementById('erros-text').innerText = wrongCount;
+
+                    const feedback = document.getElementById('feedback-msg');
+                    if (correctCount === 5) feedback.innerText = "Incrível! Controle absoluto de segurança.🏆";
+                    else if (correctCount >= 3) feedback.innerText = "Bom trabalho! Seus conceitos estão seguros. 👍";
+                    else feedback.innerText = "Sinal amarelo! Vale dar mais uma lidinha para evitar riscos. 🤔";
+                }
+            });
+
+            // IntersectionObserver pra header
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+
+</html>

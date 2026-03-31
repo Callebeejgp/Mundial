@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página sobre o Dia Mundial do Backup, desenvolvida para o N1 de Sistemas.">
+    <title>Dia Mundial do Backup | UNIPLAN</title>
+
+    <!-- Fontes modernas do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;800&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Banner Cabeçalho -->
+    <header class="banner">
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+            <div class="date-badge">📅 31 de Março</div>
+            <h1 class="animate-on-scroll">Dia Mundial do Backup</h1>
+            <p class="animate-on-scroll delay-1">Seus dados são o seu patrimônio digital. Proteja-os hoje para não se
+                arrepender amanhã.</p>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal - Exigência de 15%+ de Margens -->
+    <main class="main-content">
+
+        <section class="intro-section animate-on-scroll">
+            <h2>Por que o Backup é tão importante?</h2>
+            <p>Vivemos em uma era em que a maior parte de nossas lembranças, trabalhos essenciais e documentos
+                financeiros ou sensíveis existem puramente no formato digital. Infelizmente, falhas em dispositivos,
+                erros humanos e ataques cibernéticos (como os perigosos ransomwares) são realidades diárias
+                intransigentes. Ter um backup recorrente e confiável é a única garantia de integridade e continuidade de
+                tudo o que importa para você e sua organização.</p>
+        </section>
+
+        <section class="simulation-section animate-on-scroll delay-1">
+            <h2>Simulação de Perda de Dados</h2>
+            <p>Veja na prática a diferença que a preparação faz diante de um imprevisto cibernético ou falha técnica:
+            </p>
+            <div class="simulation-container">
+                <div class="sim-card">
+                    <button class="sim-btn btn-danger"
+                        onclick="document.getElementById('sim-loss').style.display='block'">Agir sem Backup 😱</button>
+                    <div id="sim-loss" class="sim-alert error-alert" style="display: none;">
+                        ❌ Falha no HD detectada! <br><strong>Você perdeu tudo!</strong>
+                    </div>
+                </div>
+                <div class="sim-card">
+                    <button class="sim-btn btn-success"
+                        onclick="document.getElementById('sim-safe').style.display='block'">Agir com Backup 🛡️</button>
+                    <div id="sim-safe" class="sim-alert success-alert" style="display: none;">
+                        ✅ Falha no HD detectada, mas <br><strong>seus dados foram recuperados!</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="strategy-section">
+            <h2 class="animate-on-scroll">A Estratégia de Ouro: Regra 3-2-1</h2>
+            <div class="cards-container">
+                <!-- Card 1 -->
+                <a href="copias.html" class="card interactive-card animate-on-scroll delay-1">
+                    <div class="card-icon">3</div>
+                    <h3>Cópias</h3>
+                    <p>Mantenha sempre três cópias dos seus dados vitais. Uma é o dado original com o qual você trabalha
+                        e as demais são os seus backups de segurança.</p>
+                    <span class="click-indicator">Clique e saiba mais <span class="arrow">→</span></span>
+                </a>
+                <!-- Card 2 -->
+                <a href="midias.html" class="card interactive-card animate-on-scroll delay-2">
+                    <div class="card-icon">2</div>
+                    <h3>Mídias</h3>
+                    <p>Utilize pelo menos duas mídias ou tecnologias de armazenamento diferentes (ex: um HD Externo de
+                        mesa e um pendrive portátil de emergência).</p>
+                    <span class="click-indicator">Clique e saiba mais <span class="arrow">→</span></span>
+                </a>
+                <!-- Card 3 -->
+                <a href="offsite.html" class="card interactive-card animate-on-scroll delay-3">
+                    <div class="card-icon">1</div>
+                    <h3>Offsite</h3>
+                    <p>Mantenha sempre no mínimo uma cópia <em>offsite</em> (fora do seu local físico original, longe de
+                        riscos primários), de preferência em um cofre na nuvem criptografado.</p>
+                    <span class="click-indicator">Clique e saiba mais <span class="arrow">→</span></span>
+                </a>
+            </div>
+        </section>
+
+        <section class="tools-section animate-on-scroll delay-1" style="margin-top: 60px; text-align: center;">
+            <h2>Ferramentas Recomendadas</h2>
+            <p style="margin-bottom: 30px;">Os melhores serviços virtuais baseados em nuvem para seu backup diário.</p>
+            <div class="cards-container">
+                <a href="https://drive.google.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">📁</div>
+                    <div class="tool-info">
+                        <h3>Google Drive</h3>
+                        <p>Ótimo espaço gratuito, rápido e com integração total ao ecossistema Google.</p>
+                    </div>
+                </a>
+                <a href="https://onedrive.live.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">🌐</div>
+                    <div class="tool-info">
+                        <h3>OneDrive</h3>
+                        <p>Integração nativa perfeita com o Windows e aplicativos do Office.</p>
+                    </div>
+                </a>
+                <a href="https://www.dropbox.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">📦</div>
+                    <div class="tool-info">
+                        <h3>Dropbox</h3>
+                        <p>Sincronização ágil e solução clássica de compartilhamento corporativo.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="timeline-section animate-on-scroll delay-2"
+            style="margin: 60px 0; display: flex; flex-direction: column; align-items: center;">
+            <h2 style="text-align: center;">A Linha do Tempo da Evolução</h2>
+            <p style="text-align: center; margin-bottom: 30px;">Como guardávamos os dados antes das conexões modernas.
+            </p>
+            <div class="timeline" style="width: 100%; max-width: 700px;">
+                <div class="timeline-item">
+                    <div class="time-marker">💾</div>
+                    <a href="https://pt.wikipedia.org/wiki/Disquete" target="_blank" rel="noopener noreferrer"
+                        class="time-content" style="text-decoration: none; display: block;">
+                        <h3>Antigamente: Disquete</h3>
+                        <p>O armazenamento dependia de frágeis disquetes com meros 1,44 MB de capacidade.</p>
+                    </a>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-marker">💿</div>
+                    <a href="https://pt.wikipedia.org/wiki/Disco_compacto" target="_blank" rel="noopener noreferrer"
+                        class="time-content" style="text-decoration: none; display: block;">
+                        <h3>Depois: CD/DVD e Pendrive</h3>
+                        <p>Iniciou-se a era dos discos e pendrives, garantindo mais espaço de armazenamento local.</p>
+                    </a>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-marker">☁️</div>
+                    <a href="https://pt.wikipedia.org/wiki/Computa%C3%A7%C3%A3o_em_nuvem" target="_blank"
+                        rel="noopener noreferrer" class="time-content" style="text-decoration: none; display: block;">
+                        <h3>Hoje: Nuvem</h3>
+                        <p>Com a nuvem, sincronizamos instantaneamente nossas informações em enormes servidores 24
+                            horas.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="quiz-cta-section animate-on-scroll delay-1" style="text-align: center; margin-bottom: 80px;">
+            <div class="quiz-cta-container">
+                <h2 style="font-size: 2.5rem; color: #fff; margin-bottom: 15px;">Pronto para testar seus conhecimentos?
+                </h2>
+                <p style="font-size: 1.15rem; color: #cbd5e1; margin-bottom: 30px;">Faça um teste rápido para ver
+                    quantas você acerta!</p>
+                <a href="quiz.html" class="quiz-btn">Testar Conhecimentos</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="logo-container">
+                <!-- Imagem enviada inserida no rodapé -->
+                <img src="uniplan_logo.png" alt="Logo UNIPLAN" class="uniplan-logo animate-on-scroll">
+                <p class="institution-name">UNIPLAN - Centro Universitário Planalto do Distrito Federal</p>
+            </div>
+
+            <div class="team-container animate-on-scroll delay-1">
+                <h3>Integrantes do Projeto (N1):</h3>
+                <ul>
+                    <li>Taoã A. Martinelli de Araújo - 02410041196</li>
+                    <li>Callebe de Almeida Sousa - 02410041073</li>
+                    <li>Kauan Lopes Bispo de Melo - 02410041138</li>
+                    <li>Ediglei Davi Alexandre de Sousa - 02410041115</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script para Micro-interações (Fade e Slide up suave) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Anima apenas uma vez para otimização
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+    <!-- Floating Video PiP -->
+    <div class="floating-video" id="draggable-video">
+        <div class="drag-handle" id="drag-handle">
+            <span>⋮⋮ Arraste</span>
+            <button onclick="document.getElementById('draggable-video').style.display='none'"
+                title="Fechar Video">✖</button>
+        </div>
+        <video src="video_backup.mp4" title="O que é Backup?" autoplay muted loop
+            style="width: 100%; height: calc(100% - 30px); object-fit: cover; display: block;" controls></video>
+    </div>
+
+    <script>
+        // Lógica para tornar o vídeo arrastável
+        const dragItem = document.getElementById("draggable-video");
+        const dragHandle = document.getElementById("drag-handle");
+
+        let isDragging = false;
+        let startX, startY, initialX, initialY;
+
+        dragHandle.addEventListener("mousedown", dragStart);
+        document.addEventListener("mouseup", dragEnd);
+        document.addEventListener("mousemove", drag);
+
+        dragHandle.addEventListener("touchstart", dragStart, { passive: false });
+        document.addEventListener("touchend", dragEnd);
+        document.addEventListener("touchmove", drag, { passive: false });
+
+        function dragStart(e) {
+            initialX = dragItem.offsetLeft;
+            initialY = dragItem.offsetTop;
+
+            if (e.type === "touchstart") {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+            } else {
+                startX = e.clientX;
+                startY = e.clientY;
+            }
+
+            isDragging = true;
+            dragItem.style.transition = 'none'; // Desabilita smooth transition enquanto arrasta
+
+            // Remove right/bottom constraint and lock to top/left pixel values so it jumps perfectly
+            dragItem.style.right = 'auto';
+            dragItem.style.bottom = 'auto';
+            dragItem.style.left = initialX + "px";
+            dragItem.style.top = initialY + "px";
+        }
+
+        function dragEnd(e) {
+            isDragging = false;
+            dragItem.style.transition = 'transform 0.3s ease, border-color 0.3s ease';
+        }
+
+        function drag(e) {
+            if (isDragging) {
+                e.preventDefault();
+                let currentX, currentY;
+
+                if (e.type === "touchmove") {
+                    currentX = e.touches[0].clientX - startX;
+                    currentY = e.touches[0].clientY - startY;
+                } else {
+                    currentX = e.clientX - startX;
+                    currentY = e.clientY - startY;
+                }
+
+                dragItem.style.left = (initialX + currentX) + "px";
+                dragItem.style.top = (initialY + currentY) + "px";
+            }
+        }
+    </script>
+</body>
+
+</html>

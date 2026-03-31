@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 Mídias Diferentes | Regra 3-2-1</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;800&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="banner detail-banner">
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+            <h1 class="animate-on-scroll">O Uso de 2 Mídias Diferentes</h1>
+        </div>
+    </header>
+
+    <main class="main-content detail-content">
+        <h2 class="animate-on-scroll delay-1">Evitando a Falha do Mesma Causa</h2>
+        <p class="animate-on-scroll delay-2">Diversificar o tipo de mídia de armazenamento é parte essencial de qualquer
+            defesa digital. Se todos os seus arquivos vitais estiverem no mesmo tipo de mídia ou no mesmo cluster de
+            discos físicos de um fabricante com defeito, uma falha de temperatura ou de lote pode destruir tudo ao mesmo
+            tempo.</p>
+        <p class="animate-on-scroll delay-2">Lembre-se: nenhum equipamento ou tecnologia dura para sempre. Por isso, a
+            regra impõe sempre diversificar as mídias, atenuando as chances de que hardware idêntico falhe junto pelo
+            mesmo fator.</p>
+
+        <h2 class="animate-on-scroll delay-2" style="margin-top:50px;">Exemplos de Combinações Seguras:</h2>
+        <ul class="detail-list animate-on-scroll delay-2">
+            <li><strong>HD Interno do PC + HD Externo de secretária.</strong> Duas tecnologias de discos separadas.</li>
+            <li><strong>Storage local Flash (SSD) + Storage corporativo em Fita (LTO).</strong> Combinando drives
+                mecânicos e magnéticos para uso arquivístico pesado.</li>
+            <li><strong>Servidor de Arquivos da Empresa (NAS) + Disco Ótico ou Pendrive longo prazo.</strong></li>
+        </ul>
+
+        <div class="btn-container animate-on-scroll delay-3">
+            <a href="index.html" class="back-btn">← Voltar para a Página Inicial</a>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+
+</html>
